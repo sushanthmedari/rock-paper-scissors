@@ -1,0 +1,32 @@
+/* need to make button icons 'bounce' when mouse hovers over 
+them, event listener for that */
+
+body {
+    
+    background-color:  black;
+    height: 100vh;
+    color: white;  
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    font-weight:  500;
+    font-size: 20px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+}
+
+#rock, #paper, #scissors {
+
+        margin: 5px;
+
+}
+
+.winner {
+
+    padding-top: 300px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: 600;
+
+
+}

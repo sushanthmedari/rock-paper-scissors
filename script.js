@@ -30,6 +30,24 @@
         const scoretwo = document.createElement('div');
 
         const winner = document.createElement('div');
+
+        const intro = document.createElement('div');
+
+        const again = document.createElement('button');
+
+        const rock = document.createElement('button');
+
+        const paper = document.createElement('button');
+
+        const scissors = document.createElement('button');
+
+        rock.setAttribute('id','rock');
+
+        paper.setAttribute('id','paper');
+
+        scissors.setAttribute('id','scissors');
+
+        intro.classList.add('intro');
         
         content.classList.add('content');
 
@@ -39,15 +57,25 @@
 
         winner.classList.add('winner');
 
+        again.classList.add('again');
 
-        // body.appendChild(content);
+        intro.textContent = "Play against the computer. First to 5 points wins !"
 
-        // body.appendChild(score);
+        again.textContent = "Play again ?";
 
-        // body.appendChild(scoretwo);
+        rock.innerHTML = '<img src="./images/rock.png">';
 
-        // body.appendChild(winner);
+        paper.innerHTML = '<img src="./images/paper.png">';
 
+        scissors.innerHTML = '<img src="./images/scissors.png">';
+
+        body.appendChild(intro);
+      
+        body.appendChild(paper);
+
+        body.appendChild(rock);
+
+        body.appendChild(scissors);
 
 
         const buttons = document.querySelectorAll('button');
@@ -55,10 +83,9 @@
 
         buttons.forEach((button) => {
 
-            // and for each one we add a 'click' listener
             button.addEventListener('click', () => {
                 playRound(button.id,getComputerChoice())
-            //   console.log(button.id);
+    
             });
           });
         
@@ -72,16 +99,12 @@
 
             body.appendChild(score);
 
-            body.appendChild(scoretwo);
-
-            // body.removeChild(winner);
-        
+            body.appendChild(scoretwo);        
 
             if(playerChoice === computerSelection){
 
                 content.textContent = 'It is a tie';
-                // console.log('It is a tie');
-                // return 'It is a tie';
+      
             }
             else if((playerChoice === 'ROCK') && (computerSelection === 'SCISSORS'))
             {
@@ -89,44 +112,37 @@
 
                 content.textContent = 'You won! Computer chose Scissors. Rock beats Scissors';
 
-                // console.log('You won! Computer chose Scissors. Rock beats Scissors');
-                // return 'You won! Computer chose Scissors. Rock beats Scissors'
+    
             }
             else if((playerChoice === 'PAPER') && (computerSelection === 'ROCK'))
             {
                 playerPoints += 1;
                 content.textContent = 'You won! Computer chose Rock. Paper beats Rock';
-                // console.log('You won! Computer chose Rock. Paper beats Rock');
-                // return 'You won! Computer chose Rock. Paper beats Rock'
+           
             }
             else if((playerChoice === 'SCISSORS') && (computerSelection === 'PAPER'))
             {
                 playerPoints += 1;
                 content.textContent = 'You won! Computer chose Paper. Scissors beats Paper';
-                // console.log('You won! Computer chose Paper. Scissors beats Paper');
-                // return 'You won! Computer chose Paper. Scissors beats Paper'
+              
             }
             
             else if((computerSelection === 'ROCK') && (playerChoice === 'SCISSORS'))
             {
                 computerPoints += 1;
                 content.textContent = 'You Lose! Computer chose Rock. Rock beats Scissors';
-                // console.log('You Lose! Computer chose Rock. Rock beats Scissors');
-                // return 'You Lose! Computer chose Rock. Rock beats Scissors'
+              
             }
             else if((computerSelection === 'PAPER') && (playerChoice === 'ROCK'))
             {
                 computerPoints += 1;
                 content.textContent = 'You Lose! Computer chose Paper. Paper beats Rock';
-                // console.log('You Lose! Computer chose Paper. Paper beats Rock');
-                // return 'You Lose! Computer chose Paper. Paper beats Rock'
+            
             }
             else if((computerSelection === 'SCISSORS') && (playerChoice === 'PAPER'))
             {
                 computerPoints += 1;
                 content.textContent = 'You Lose! Computer chose Scissors. Scissors beats Paper';
-                // console.log('You Lose! Computer chose Scissors. Scissors beats Paper');
-                // return 'You Lose! Computer chose Scissors. Scissors beats Paper'
             }
 
             score.textContent = 'Player Points: '  + playerPoints;
@@ -148,10 +164,16 @@
                 body.removeChild(content);
 
                 body.removeChild(score);
+
     
                 body.removeChild(scoretwo);
     
                 body.appendChild(winner); 
+
+                body.setAttribute('style', 'color: black; background: rgb(50,205,50);');
+
+                playAgain();
+
                 // at this point the winning message will appear 
                 // just need to figure out a way to introduce a message 
                 // on the screen asking if the player wants to 
@@ -179,6 +201,11 @@
     
                 body.appendChild(winner); 
 
+                body.setAttribute('style', 'color: white; background: rgb(255,99,71);');
+
+
+                playAgain();
+
 
                 // alert('Do you want to play again ?');
 
@@ -192,6 +219,40 @@
             }
 
     
+
+        }
+
+        function playAgain(){
+
+            body.removeChild(intro);
+
+            body.appendChild(again); 
+
+            body.removeChild(paper);
+
+            body.removeChild(rock);
+    
+            body.removeChild(scissors);
+
+            again.addEventListener('click', function () {
+
+                body.setAttribute('style', 'color: white; background: black;');
+
+
+                body.removeChild(again); 
+
+                body.removeChild(winner);
+
+                body.appendChild(intro);
+
+
+                body.appendChild(paper);
+
+                body.appendChild(rock);
+        
+                body.appendChild(scissors);
+              });
+
 
         }
 
